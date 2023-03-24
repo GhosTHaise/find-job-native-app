@@ -11,12 +11,12 @@ import {
 import styles from './popularjobs.style'
 import { COLORS,SIZES } from '../../../constants'
 import PopularJobCard from "../../common/cards/popular/PopularJobCard";
-import userFetch from '../../../hook/useFetch'
+import useFetch from '../../../hook/useFetch'
 
 const Popularjobs = () => {
   const router = useRouter();
 
-  
+  const {data,isLoading,error} = useFetch();
   return (
     <View style={styles.container}>
       <View style={styles.header} >
