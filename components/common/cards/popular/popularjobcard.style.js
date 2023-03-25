@@ -5,6 +5,7 @@ import { COLORS, FONT, SHADOWS, SIZES } from "../../../../constants";
 const styles = StyleSheet.create({
   container: (selectedJob, item) => ({
     width: 250,
+    margin: 5,
     padding: SIZES.xLarge,
     backgroundColor: selectedJob === item.job_id ? COLORS.primary : "#FFF",
     borderRadius: SIZES.medium,
