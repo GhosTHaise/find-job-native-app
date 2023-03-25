@@ -12,10 +12,10 @@ import { COLORS, } from '../../../constants'
 import NearByJobCard from "../../common/cards/nearby/NearbyJobCard";
 import useFetch from '../../../hook/useFetch'
 
-const Nearbyjobs = () => {
+const Nearbyjobs = ({instance}) => {
   const router = useRouter();
 
-  const {data,isLoading,error} = useFetch("search",{
+  const {data,isLoading,error} = useFetch(instance,"search",{
       query : "laravel developer",
       num_pages : 1
   });

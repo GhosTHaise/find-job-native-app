@@ -1,4 +1,6 @@
 import { useState } from "react";
+import axios from "axios";
+import rateLimit from 'axios-rate-limit';
 import { 
     View , 
     ScrollView,
@@ -12,6 +14,7 @@ import { StatusBar } from "expo-status-bar";
 
 const Home = () => {
     const router = useRouter();
+    const axiosInstance = rateLimit(axios.create(),{maxRequests: 1, perMilliseconds: 1000, maxRPS: 1})
     return (
         <SafeAreaView style={{
                 flex : 1,
@@ -41,8 +44,12 @@ const Home = () => {
                         <Welcome
 
                         />
-                        <Popularjobs />
-                        <Nearbyjobs />
+                        <Popularjobs 
+                            instance={axiosInstance}
+                        />
+                        <Nearbyjobs
+                            instance={axiosInstance}
+                        />
                 </View>
             </ScrollView> 
         </SafeAreaView>
