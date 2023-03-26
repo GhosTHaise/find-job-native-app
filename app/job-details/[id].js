@@ -29,7 +29,44 @@ const JobDetails = () => {
     });
 
   return (
-    <Text>Job Details</Text>
+    <SafeAreaView 
+    style={{
+        flex:1,
+        backgroundColor : COLORS.lightWhite
+    }}
+    
+    >
+       <Stack.Screen
+        options={{
+            headerTitleAlign : "center",
+            headerStyle : {backgroundColor : COLORS.lightWhite},
+            headerShadowVisible :  false,
+            headerBackVisible : false,
+            headerLeft : () => (
+                <ScreenHeaderBtn
+                    iconUrl={icons.left}
+                    dimension="60%"
+                    handlePress={() => router.back()}
+                />
+            ),
+            headerRight : () => (
+                <ScreenHeaderBtn
+                    iconUrl={icons.share}
+                    dimension="60%"
+                />
+            ),
+            headerTitle : ""
+        }}
+       >
+       </Stack.Screen>
+
+       <ScrollView
+        showsVerticalScrollIndicator={false}
+        refreshControl={<RefreshControl />}
+        >
+
+       </ScrollView>
+    </SafeAreaView>
   )
 }
 
