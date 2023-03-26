@@ -15,6 +15,12 @@ import useFetch from '../../../hook/useFetch'
 
 const Popularjobs = ({instance}) => {
   const router = useRouter();
+  const [selectedJob, setSelectedJob] = useState();
+
+  const handleCardPress = (item) => {
+    router.push(`/job-details/${item.job_id}`);
+    setSelectedJob(item.job_id);
+  }
 
   const {data,isLoading,error} = useFetch(instance,"search",{
       query : "React developer",
@@ -45,6 +51,8 @@ const Popularjobs = ({instance}) => {
               renderItem={({item})=>(
                   <PopularJobCard
                     item={item}
+                    selectedJob={selectedJob}
+                    handleCardPress={handleCardPress}
                   />
               )}
               showsHorizontalScrollIndicator={false}
