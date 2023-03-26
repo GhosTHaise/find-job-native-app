@@ -15,10 +15,10 @@ import useFetch from '../../../hook/useFetch'
 const Nearbyjobs = ({instance}) => {
   const router = useRouter();
 
-  const {data,isLoading,error} = useFetch(instance,"search",{
+  const {data,isLoading,error} = useFetch("search",{
       query : "laravel developer",
       num_pages : 1
-  });
+  },instance);
   return (
     <View style={styles.container}>
       <View style={styles.header} >

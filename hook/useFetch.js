@@ -4,7 +4,7 @@ import axios from "axios"
 
 //const rapidAPiKey = RAPID_API_KEY;
 
-const useFetch = (instance,endpoint,query) => {
+const useFetch = (endpoint,query,instance) => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -23,7 +23,7 @@ const useFetch = (instance,endpoint,query) => {
         setIsLoading(true);
 
         try {
-            const response = await instance.request(options)
+            const response = await ((instance) ? instance.request(options) : axios.request(options))
             setData(response.data.data)
             setIsLoading(false);
         } catch (error) {

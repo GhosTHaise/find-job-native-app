@@ -22,10 +22,10 @@ const Popularjobs = ({instance}) => {
     setSelectedJob(item.job_id);
   }
 
-  const {data,isLoading,error} = useFetch(instance,"search",{
+  const {data,isLoading,error} = useFetch("search",{
       query : "React developer",
       num_pages : 1
-  });
+  },instance);
   return (
     <View style={styles.container}>
       <View style={styles.header} >
