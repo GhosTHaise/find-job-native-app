@@ -1,12 +1,15 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Image} from 'react-native'
 
 import styles from './company.style'
-
-const Company = () => {
+import { icons } from '../../../constants'
+import { checkImageURL } from '../../../utils'
+const Company = ({companyLogo,jobTitle,companyName,Location}) => {
   return (
-    <View>
-      <Text>Company</Text>
+    <View style={styles.container}>
+      <View style={styles.logoBox}>
+
+      </View>
     </View>
   )
 }
