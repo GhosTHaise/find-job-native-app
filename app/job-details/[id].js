@@ -15,7 +15,8 @@ import {
     JobAbout,
     JobFooter,
     JobTabs,
-    ScreenHeaderBtn } from '../../components'
+    ScreenHeaderBtn, 
+    Specifics} from '../../components'
 import { COLORS,icons,SIZES } from '../../constants'
 import useFetch from '../../hook/useFetch'
 
@@ -34,6 +35,26 @@ const JobDetails = () => {
     const [activeTab, setActiveTab] = useState(tabs[0]);
     
     const onRefresh = () => {}
+
+    const displayTabContent = () => {
+        switch(activeTab){
+            case tabs[1]:
+                return <Specifics 
+                    title={tabs[1]}
+                    points={data[0].job_highlights?.Qualifications ?? ["N/A"]}
+                />
+                break;
+            case tabs[0]:
+                return <JobAbout
+                    info={data[0].jpb_description ?? "No data provided"}
+                />
+                break;
+            case tabs[2]:
+                break;    
+            default:
+                break;    
+        }
+    }
   return (
     <SafeAreaView 
     style={{
@@ -100,6 +121,8 @@ const JobDetails = () => {
                         activeTab={activeTab}    
                         setActiveTab={setActiveTab}
                     />
+
+                    {displayTabContent()}
                 </View>
             )
         }
