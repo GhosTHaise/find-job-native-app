@@ -5,7 +5,6 @@ import styles from './footer.style'
 import { icons } from '../../../constants'
 
 const Footer = ({url}) => {
-  alert(url)
   return (
     <View style={styles.container}>
         <TouchableOpacity style={styles.likeBtn}>
