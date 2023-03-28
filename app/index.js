@@ -1,3 +1,4 @@
+import { useState } from "react";
 import axios from "axios";
 import rateLimit from 'axios-rate-limit';
 import { 
@@ -14,6 +15,8 @@ import { StatusBar } from "expo-status-bar";
 const Home = () => {
     const router = useRouter();
     const axiosInstance = rateLimit(axios.create(),{maxRequests: 1, perMilliseconds: 3000, maxRPS: 1})
+    
+    const [searchTerm, setSearchTerm] = useState("");
     return (
         <SafeAreaView style={{
                 flex : 1,
@@ -41,7 +44,13 @@ const Home = () => {
                     padding : SIZES.medium
                 }}>
                         <Welcome
-
+                            searchTerm={searchTerm}
+                            setSearchTerm={setSearchTerm}
+                            handleClick={()=> {
+                                if(searchTerm){
+                                    router.push(`/search/${setSearchTerm}`)
+                                }
+                            }}
                         />
                         <Popularjobs 
                             instance={axiosInstance}
